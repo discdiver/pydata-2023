@@ -1,10 +1,8 @@
-import requests
-
-# from prefect import flow
+import requests  # from prefect import flow
 
 
 # @flow(log_prints=True)
-def fetch_weather(lat: float = 3, lon: float = -30):
+def fetch_weather(lat: float = 40.758896, lon: float = -73.985130):
     base_url = "https://api.open-meteo.com/v1/forecast/"
     weather = requests.get(
         base_url,
@@ -16,6 +14,5 @@ def fetch_weather(lat: float = 3, lon: float = -30):
 
 
 if __name__ == "__main__":
-    fetch_weather.serve(name="scheduled-deploy", interval="3600")
-    # or
-    # fetch_weather.serve(name="scheduled-deploy2", cron="0 0 * * *")
+    fetch_weather()
+    # fetch_weather.serve(name="scheduled-deploy", interval="3600")
